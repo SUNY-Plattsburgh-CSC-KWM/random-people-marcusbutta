@@ -15,10 +15,23 @@ async function getPeople() {
 async function buildTable() {
 	try {
 		const data = await getPeople();
+        let people = [];
+        console.log(data.results);
+        for (const value of data.results) {
+            let person = []
+            person.push(`${value.name.title} ${value.name.first} ${value.name.last}`);
+            person.push(`${value.location.street.number} ${value.location.street.name}`);
+            person.push(`${value.location.city}`);
+            person.push(`${value.location.state}`);
+            person.push(`${value.location.postcode}`);
+            person.push(`${value.location.coordinates.latitude}`);
+            person.push(`${value.location.coordinates.longitude}`);
+            people.push(person);
+        }
+        console.log(people);
 	} catch (e) {
 		console.log("Error " + e);
 	}
 }
 
 buildTable();
-
