@@ -26,13 +26,16 @@ async function buildTable() {
             person.push(`${value.location.postcode}`);
             person.push(`${value.location.coordinates.latitude}`);
             person.push(`${value.location.coordinates.longitude}`);
+            person.push(`${value.name.last}`);
+            person.push(`${value.cell}`);
             people.push(person);
         }
+        people.sort((a,b) => a[7].localeCompare(b[7]));
         console.log(people);
 
         let count = 1;
         for (const i in people) {
-            $('#people').append(`<tr id="person${count}>">
+            $('#people').append(`<tr title="${people[i][8]}" id="person${count}>">
                 <td>${people[i][0]}</td>
                 <td>${people[i][1]}</td>
                 <td>${people[i][2]}</td>
