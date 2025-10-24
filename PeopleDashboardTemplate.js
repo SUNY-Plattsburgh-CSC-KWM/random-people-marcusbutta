@@ -29,6 +29,19 @@ async function buildTable() {
             people.push(person);
         }
         console.log(people);
+
+        let count = 1;
+        for (const i in people) {
+            $('#people').append(`<tr id="person${count}>">
+                <td>${people[i][0]}</td>
+                <td>${people[i][1]}</td>
+                <td>${people[i][2]}</td>
+                <td>${people[i][3]}</td>
+                <td>${people[i][4]}</td>
+                <td>${people[i][5]}</td>
+                <td>${people[i][6]}</td>
+            </tr>`)
+        }
 	} catch (e) {
 		console.log("Error " + e);
 	}
